@@ -1,0 +1,23 @@
+angular.module('gameApp',['ui.router','ngResource','gameApp.controllers','gameApp.services']);
+
+angular.module('gameApp').config(function($stateProvider,$httpProvider){
+    $stateProvider.state('games',{
+        url:'/games',
+        templateUrl:'/rha/unsecured/partials/games.html',
+        controller:'GameListController'
+    }).state('viewGame',{
+       url:'/games/:id/view',
+       templateUrl:'/rha/unsecured/partials/game-view.html',
+       controller:'GameViewController'
+    }).state('newGame',{
+        url:'/games/new',
+        templateUrl:'/rha/unsecured/partials/game-add.html',
+        controller:'GameCreateController'
+    }).state('editGame',{
+        url:'/games/:id/edit',
+        templateUrl:'/rha/unsecured/partials/game-edit.html',
+        controller:'GameEditController'
+    });
+}).run(function($state){
+   $state.go('games');
+});

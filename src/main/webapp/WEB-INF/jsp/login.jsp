@@ -24,8 +24,8 @@
         <meta name="ROBOTS" content="NONE" />
         <meta name="GOOGLEBOT" content="NOARCHIVE" />
         
-        <script type="text/javascript" src="/rha/javascript/compressed-min.js"></script>
-        <link rel="stylesheet" type="text/css" href="/rha/styles/compressed-min.css"/>
+        <script type="text/javascript" src="/rha/javascript/login.js"></script>
+        <link rel="stylesheet" type="text/css" href="/rha/styles/login.css"/>
         <!--[if lt IE 9]>
             <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->

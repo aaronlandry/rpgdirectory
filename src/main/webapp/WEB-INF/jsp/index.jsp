@@ -6,7 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html data-ng-app="gameApp">
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=11; IE=10; IE=9; IE=8; IE=7; IE=EDGE" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -22,32 +22,49 @@
         <meta name="_csrf_header" content="${_csrf.headerName}"/>
         --%>
         
-        <script type="text/javascript" src="/rha/javascript/lib/jquery.js"></script>
-        <script type="text/javascript" src="/rha/javascript/lib/jquery-ui.js"></script>
-        <script type="text/javascript" src="/rha/javascript/lib/jquery-dialogextend.js"></script>
-        <script type="text/javascript" src="/rha/javascript/jquery-ext.js"></script>
-        <script type="text/javascript" src="/rha/javascript/login.js"></script>
-        <script type="text/javascript" src="/rha/javascript/util.js"></script>
-        <script type="text/javascript" src="/rha/javascript/directory.js"></script>
-        <link rel="stylesheet" type="text/css" href="/rha/styles/main.css"/>
-        <link rel="stylesheet" type="text/css" href="/rha/styles/lib/jquery.css"/>
-        <link rel="stylesheet" type="text/css" href="/rha/styles/directory.css"/>
-        
         <%--
+        <link rel="stylesheet" type="text/css" href="/rha/styles/main.css"/>
+        <link rel="stylesheet" type="text/css" href="/rha/styles/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="/rha/styles/app.css"/>
+        
+        <script type="text/javascript" src="/rha/javascript/lib/angular.min.js"></script>
+        <script type="text/javascript" src="/rha/javascript/app.js"></script>
+        <script type="text/javascript" src="/rha/javascript/controllers.js"></script>
+        <script type="text/javascript" src="/rha/javascript/services.js"></script>
+        <script type="text/javascript" src="/rha/javascript/lib/angular-ui-router.min.js"></script>
+        <script type="text/javascript" src="/rha/javascript/lib/angular-resource.min.js"></script>
+        --%>
+        
         <script type="text/javascript" src="/rha/javascript/compressed-min.js"></script>
         <link rel="stylesheet" type="text/css" href="/rha/styles/compressed-min.css"/>
-        --%>
+        
         
         <!--[if lt IE 9]>
             <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
         <title>rha Glossary</title>
     </head>
-    <body id="directory">
-        
-        <%-- NYI --%>
-        
-        Hello World!
-        
+    
+    <body>
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" ui-sref="games">The Game Directory</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a ui-sref="games">Home</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="row top-buffer">
+                <div class="col-xs-8 col-xs-offset-2">
+                    <div ui-view></div>
+                </div>
+            </div>
+        </div>
+
     </body>
 </html>

@@ -1,19 +1,14 @@
 /*
- * Functions for the login page.  Depends on main.js, jquery, and jquery-ui.
+ * Functions for the login page.
  */
-
-$(window).ready(function() {
-    alignLabels($('#login_form'));
-    $("input:text:visible:first").focus();
-});
 
 function login(ref) {
     if (!$('#j_username').val().length) {
-        textDialog('Please provide a user name to sign in.','User Name Required');
+        alert('Please provide a user name to sign in.');
         return false;
     }
     if (!$('#j_password').val().length) {
-        textDialog('Please provide a password to sign in.','Password Required');
+        alert('Please provide a password to sign in.');
         return false;
     }
     return true;
