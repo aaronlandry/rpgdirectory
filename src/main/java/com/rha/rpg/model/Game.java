@@ -46,7 +46,6 @@ public class Game extends AbstractPersistable<Game, GameRepository> {
     private String name;
     private Category category;
     private User creator;
-    private Boolean matchLowercase = Boolean.FALSE;
 
     @Override
     public GameRepository getRepository() {
