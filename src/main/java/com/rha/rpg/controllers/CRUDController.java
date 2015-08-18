@@ -11,7 +11,9 @@ import com.rha.rpg.persistence.ClassNotManagedException;
 import com.rha.rpg.persistence.EntityNotFoundException;
 import com.rha.rpg.persistence.GameRepository;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
@@ -47,8 +49,21 @@ public class CRUDController {
     private Validator validator;
     private final ObjectMapper MAPPER = new ObjectMapper();
     
+    @RequestMapping(value = "/Games", method=RequestMethod.GET)
+    public @ResponseBody List fetchAll(HttpServletResponse response, HttpServletRequest request) throws NoActiveUserException, 
+            EntityNotFoundException, IOException, PermissionException {
+        User user = webContext.getActiveUser();
+        if (!user.getRole().hasEntitlement(Entitlement.READ)) {
+            throw new PermissionException(Entitlement.READ);
+        }
+        List<Map> games = new ArrayList<>();
+        for (Game game : gameRepositoryImpl.findAll()) {
+            games.add(game.toMap());
+        }
+        return games;
+    }
     
-    @RequestMapping(value = "/Read/Game/{id}", method=RequestMethod.GET)
+    @RequestMapping(value = "/Games/{id}", method=RequestMethod.GET)
     public @ResponseBody Map readGame(HttpServletResponse response, HttpServletRequest request,
             @PathVariable("id") Long id) throws NoActiveUserException, EntityNotFoundException, IOException, PermissionException {
         User user = webContext.getActiveUser();
@@ -58,7 +73,7 @@ public class CRUDController {
         return gameRepositoryImpl.findById(id).toMap();
     }
     
-    @RequestMapping(value = "/Create/Game", method=RequestMethod.POST)
+    @RequestMapping(value = "/Games", method=RequestMethod.POST)
     @Transactional
     public void createGame(HttpServletResponse response, HttpServletRequest request) throws NoActiveUserException, 
             ClassNotManagedException, IOException, PermissionException {
@@ -90,7 +105,7 @@ public class CRUDController {
         response.getWriter().write(MAPPER.writeValueAsString(rtn));
     }
     
-    @RequestMapping(value = "/Update/Game/{id}", method=RequestMethod.POST)
+    @RequestMapping(value = "Games/{id}", method=RequestMethod.PUT)
     @Transactional
     public void updateGame(HttpServletResponse response, HttpServletRequest request,
             @PathVariable("id") Long id) throws NoActiveUserException, EntityNotFoundException, ClassNotManagedException, IOException, PermissionException {
@@ -123,7 +138,7 @@ public class CRUDController {
         response.getWriter().write(MAPPER.writeValueAsString(rtn));
     }
     
-    @RequestMapping(value = "/Delete/Game/{id}", method=RequestMethod.POST)
+    @RequestMapping(value = "/Games/{id}", method=RequestMethod.DELETE)
     @Transactional
     public void deleteGame(HttpServletResponse response, HttpServletRequest request,
             @PathVariable("id") Long id) throws NoActiveUserException, EntityNotFoundException, ClassNotManagedException, IOException, PermissionException {
