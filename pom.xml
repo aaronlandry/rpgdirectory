@@ -396,22 +396,22 @@
                     <aggregations>
                         <aggregation>
                             <includes>
-                                <include>**/jquery.js</include>
-                                <include>**/jquery-ui.js</include>
-                                <include>**/jquery-dialogextend.js</include>
-                                <include>**/jquery-ext.js</include>
+                                <include>**/angular.min.js</include>
+                                <include>**/angular-resource.min.js</include>
+                                <include>**/angular-ui-router.min.js</include>
+                                <include>**/services.js</include>
                                 <include>**/login.js</include>
-                                <include>**/util.js</include>
-                                <include>**/directory.js</include>
+                                <include>**/controllers.js</include>
+                                <include>**/app.js</include>
                             </includes>
                             <insertNewLine>true</insertNewLine>
                             <output>${basedir}/src/main/webapp/javascript/compressed.js</output>
                         </aggregation>
                         <aggregation>
                             <includes>
-                                <include>**/jquery.css</include>
+                                <include>**/app.css</include>
                                 <include>**/main.css</include>
-                                <include>**/directory.css</include>
+                                <include>**/bootstrap.min.css</include>
                             </includes>
                             <insertNewLine>true</insertNewLine>
                             <output>${basedir}/src/main/webapp/styles/compressed.css</output>

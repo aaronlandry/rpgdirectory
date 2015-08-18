@@ -18,6 +18,7 @@
         <intercept-url pattern="/login/failure.form*" access="permitAll"/>
         <intercept-url pattern="/javascript/**" access="permitAll"/>
         <intercept-url pattern="/images/**" access="permitAll"/>
+        <intercept-url pattern="/unsecured/**" access="permitAll"/>
         <intercept-url pattern="/styles/**" access="permitAll"/>
         <intercept-url pattern="/**" access="isAuthenticated()"/>
         <access-denied-handler error-page="/denied.do"/>
